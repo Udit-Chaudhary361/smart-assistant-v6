@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center><h1>Tasks</h1></center>
+
+<form method="post">
+    <input 
+        type="text"
+        name="task"
+        placeholder="Enter Task Here">
+    <button type="submit">Add Task</button>
+</form>
+{% if error %}
+    <p>Error : {{ error }}</p>
+{% endif %}
+<ol>
+    {% for id,task,completed in all_tasks %}
+    <li>
+        {{ task }}  | Completed = 
+        {{ "✓" if completed == 1 else "✗" }}
+        <form action="{{ url_for('delete_task',task_id=id) }}" method="post" style="display:inline;">
+            <button type="submit">DELETE</button>
+        </form>
+        <form action="{{ url_for('completed',task_id=id) }}" method="post" style="display: inline;">
+            <button type="submit">Complete</button>
+        </form>
+        <a href="{{ url_for('edit_task',task_id=id) }}">
+            <button type="button">Edit</button>
+        </a>
+            
+    </li>
+    <br>
+    {% endfor %}
+</ol>
+
+<hr>
+<form action="{{ url_for('home') }}">
+    <button type="submit">
+        Go To Home Page
+    </button>
+</form>
+
+{% endblock %}

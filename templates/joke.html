@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Joke Page</h2>
+<br>
+<form action="/joke" method="POST">
+    <button type="submit">Show Joke</button>
+</form>
+<div>
+    <p>{{ jokes or ""}}</p>
+</div>
+
+<hr>
+<form action="{{ url_for('home') }}">
+    <button type="submit">
+        Go To Home Page
+    </button>
+</form>
+
+{% endblock %}

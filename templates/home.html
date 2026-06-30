@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="{{ url_for('name') }}" method="get">
+    <button type="submit">Name</button>
+</form>
+
+<hr>
+
+<form action="{{ url_for('notes') }}" method="get">
+    <button type="submit">Notes</button>
+</form>
+
+<hr>
+
+<form action="{{ url_for('tasks') }}" method="get">
+    <button type="submit">Tasks</button>
+</form>
+
+<hr>
+
+<form action="{{ url_for('joke') }}" method="get">
+    <button type="submit">Joke</button>
+</form>
+
+<hr>
+
+<form action="{{ url_for('history') }}" method="get">
+    <button type="submit">History</button>
+</form>
+
+<hr>
+
+<form action="{{ url_for('ai') }} " method="get">
+    <button type="submit">Talk To AI</button>
+</form>
+
+{% endblock %}

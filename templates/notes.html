@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="post">
+    <input type="text"
+    name="added_note"
+    placeholder="Add Note Here">
+    <button type="submit">Add Note</button>
+</form>
+
+{% if error %}
+    <p>Error : {{ error }}</p>
+{% endif %}
+
+<ol>
+{% for id,name in all_notes %}
+
+    <li>
+        {{ name }}
+        <form
+            method="POST"
+            action="{{ url_for('delete_note',note_id=id) }}"
+            style="display:inline;">
+            <button type="submit">
+                Delete
+            </button>
+        </form>
+        <a href="{{ url_for('edit_note', note_id=id) }}">
+            <button type="button">Edit</button>
+        </a>
+        
+    </li>
+
+{% endfor %}
+</ol>
+
+<hr>
+<form action="{{ url_for('home') }}">
+    <button type="submit">
+        Go To Home Page
+    </button>
+</form>
+
+{% endblock %}

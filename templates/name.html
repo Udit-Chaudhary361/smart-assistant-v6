@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="post">
+    <input
+        type="text"
+        name="added_name"
+        placeholder="Name">
+    <button
+        type="submit"
+    >Put This Name</button>
+</form>
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+
+<H4>Current Name : {{ current_name }}</H4>
+
+<hr>
+<form action="{{ url_for('home') }}">
+    <button type="submit">
+        Go To Home Page
+    </button>
+</form>
+
+{% endblock %}
